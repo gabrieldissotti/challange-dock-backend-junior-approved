@@ -4,6 +4,7 @@ import AccountRepository from '@repositories/AccountRepository';
 
 type Request = {
   idPessoa: number;
+  idConta: number;
   saldo: number;
   limiteSaqueDiario: number;
   tipoConta: number;

@@ -8,6 +8,7 @@ class AccountsController {
   ): Promise<Response | void> {
     const {
       idPessoa,
+      idConta,
       saldo,
       limiteSaqueDiario,
       tipoConta,
@@ -17,6 +18,7 @@ class AccountsController {
 
     const success = await createAccountService.execute({
       idPessoa,
+      idConta,
       saldo,
       limiteSaqueDiario,
       tipoConta,

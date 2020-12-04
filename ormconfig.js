@@ -12,10 +12,10 @@ module.exports = {
   password: process.env.DATABASE_PASSWORD || 'dock',
   database: process.env.DATABASE_NAME || 'dock',
   logging: process.env.DATABASE_LOGGING === 'true',
-  entities: [ basePath + "/src/models/*" + extensionFiles],
-  migrations: [basePath + "/src/database/migrations/*" + extensionFiles],
+  entities: [ basePath + "/src/modules/**/infra/typeorm/entities/*" + extensionFiles ],
+  migrations: [ basePath + "/src/shared/infra/typeorm/migrations/*" + extensionFiles ],
   logging: true,
   cli: {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }

@@ -9,7 +9,7 @@
     "allowJs": true,
     "outDir": "./dist",
     "rootDir": ".",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "removeComments": true,
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "strictPropertyInitialization": false,
@@ -20,12 +20,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@domains/*": ["./src/domains/*"],
-      "@core/*": ["./src/core/*"],
-      "@config/*": ["./src/config/*"],
-      "@apis/*": ["./src/apis/*"],
-      "@models/*": ["./src/models/*"],
-      "@repositories/*": ["./src/repositories/*"]
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"]
     }
   }
 }

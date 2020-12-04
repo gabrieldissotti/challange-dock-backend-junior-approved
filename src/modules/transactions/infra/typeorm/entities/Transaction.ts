@@ -7,14 +7,14 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Account from './Account';
+import Account from '@modules/accounts/infra/typeorm/entities/Account';
 
 @Entity('Transacoes')
 class Transactions {
   @PrimaryGeneratedColumn()
   idTransacao: number;
 
-  @ManyToOne(type => Account, account => account.transactions)
+  @ManyToOne(() => Account, account => account.transactions)
   @JoinColumn({ name: 'idConta' })
   account: Account;
 

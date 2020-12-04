@@ -7,8 +7,9 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
+
 import People from './People';
-import Transaction from './Transaction';
 
 @Entity('Contas')
 class Account {
@@ -18,10 +19,10 @@ class Account {
   @Column()
   idPessoa: number;
 
-  @OneToOne(type => People, people => people.account)
+  @OneToOne(() => People, people => people.account)
   people: People;
 
-  @OneToMany(type => Transaction, transaction => transaction.account)
+  @OneToMany(() => Transaction, transaction => transaction.account)
   transactions: Transaction[];
 
   @Column()

@@ -13,7 +13,7 @@ class People {
   @PrimaryGeneratedColumn()
   idPessoa: number;
 
-  @OneToOne(type => Account, account => account.people)
+  @OneToOne(() => Account, account => account.people)
   account: Account;
 
   @Column()

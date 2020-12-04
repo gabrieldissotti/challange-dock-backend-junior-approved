@@ -17,7 +17,8 @@ module.exports = {
   testMatch: ['**/*.spec.ts'],
   collectCoverage: true,
   collectCoverageFrom: [
-    '<rootDir>/src/modules/**/services/*.ts'
+    '<rootDir>/src/modules/**/services/*.ts',
+    '<rootDir>/src/modules/**/controllers/*.ts'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: [

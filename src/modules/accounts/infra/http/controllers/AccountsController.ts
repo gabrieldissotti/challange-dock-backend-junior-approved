@@ -5,22 +5,24 @@ import CreateAccountService from '@modules/accounts/services/CreateAccountServic
 
 class AccountsController {
   public async store(request: Request, response: Response): Promise<Response> {
-    const { idPessoa, saldo, limiteSaqueDiario, tipoConta } = request.body;
+    const { saldo, limiteSaqueDiario, tipoConta, idPessoa } = request.body;
 
     const createAccountService = container.resolve(CreateAccountService);
 
-    const success = await createAccountService.execute({
+    const account = await createAccountService.execute({
       idPessoa,
       saldo,
       limiteSaqueDiario,
       tipoConta,
     });
 
-    if (!success) {
-      return response.status(500).json({ success });
-    }
-
-    return response.json({ success });
+    return response.json({
+      success: true,
+      message: 'Conta cadastrada com sucesso',
+      data: {
+        ...account,
+      },
+    });
   }
 }
 

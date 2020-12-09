@@ -29,14 +29,14 @@ http://localhost:3333. Mas calma, você pode ver os endpoints disponíveis na
 
 ## Pontos que poderiam ser melhorados
 
-[ ] - Adicionar validação nas rotas
-[ ] - CPF único por pessoa
-[ ] - Adicionar documentação da referencia da api
-[ ] - O teste de integração tá consumindo a base de desenvolvimento invés da base de teste
-[ ] - criar testes de integração pra outras rotas além da 'criar conta'
-[ ] - Não permitir débito ou crédito com número negativo
-[ ] - faz sentido atualizar o valor em saldo na tabela conta quando houver crédito ou débito
-[ ] - faz sentido limitar o valor de saque por dia
+- Adicionar validação nas rotas
+- CPF único por pessoa
+- Adicionar documentação da referencia da api
+- O teste de integração tá consumindo a base de desenvolvimento invés da base de teste
+- criar testes de integração pra outras rotas além da 'criar conta'
+- Não permitir débito ou crédito com número negativo
+- faz sentido atualizar o valor em saldo na tabela conta quando houver crédito ou débito
+- faz sentido limitar o valor de saque por dia
 
 ## Considerações finais
 
@@ -47,3 +47,5 @@ Qualquer dúvida também pode me chamar no email:
 Contato: gabrieldnrodrigues@gmail.com
 
 [Visite meu linkedin](https://www.linkedin.com/in/gabrieldissotti/)
+
+PS. (sempre tem um ps): Não fiz tudo o que eu queria, mas dei meu melhor no tempo que tive disponibilidade rs.

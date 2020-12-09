@@ -11,7 +11,7 @@ type CreateAndSaveRequest = {
 };
 
 @EntityRepository(Account)
-class AccountsRepository {
+class FakeAccountsRepository {
   private accounts: Account[] = [];
 
   public async create({
@@ -37,4 +37,4 @@ class AccountsRepository {
   }
 }
 
-export default AccountsRepository;
+export default FakeAccountsRepository;

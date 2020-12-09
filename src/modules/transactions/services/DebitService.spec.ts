@@ -1,22 +1,22 @@
 import 'reflect-metadata';
 
-import CreditService from './CreditService';
+import DebitService from './DebitService';
 
 import FakeTransactionsRepository from '../repositories/fakes/FakeTransactionsRepository';
 
-describe('CreditTransaction', () => {
-  it('should be able to credit in an account', async () => {
+describe('DebitTransaction', () => {
+  it('should be able to debit in an account', async () => {
     const fakeTransactionsRepository = new FakeTransactionsRepository();
 
-    const creditService = new CreditService(fakeTransactionsRepository);
+    const debitService = new DebitService(fakeTransactionsRepository);
 
-    const transaction = await creditService.execute({
+    const transaction = await debitService.execute({
       idConta: 1,
       valor: 100,
     });
 
     expect(transaction).toHaveProperty('idTransacao');
     expect(transaction.idTransacao).toBe(1);
-    expect(transaction.valor).toBe(100);
+    expect(transaction.valor).toBe(-100);
   });
 });

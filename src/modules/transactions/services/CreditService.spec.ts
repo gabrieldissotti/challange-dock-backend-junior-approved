@@ -4,8 +4,8 @@ import CreditService from './CreditService';
 
 import FakeTransactionsRepository from '../repositories/fakes/FakeTransactionsRepository';
 
-describe('CreateAccount', () => {
-  it('should be able to create a new account', async () => {
+describe('CreditTransaction', () => {
+  it('should be able to credit in an account', async () => {
     const fakeTransactionsRepository = new FakeTransactionsRepository();
 
     const creditService = new CreditService(fakeTransactionsRepository);

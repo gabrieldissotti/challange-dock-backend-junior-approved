@@ -28,6 +28,21 @@ class FakeTransactionsRepository {
 
     return transaction;
   }
+
+  public async getAccountBalance(accountId: number): Promise<number> {
+    const totalBalance = this.transactions.reduce(
+      (balance, currentTransaction) => {
+        if (accountId !== currentTransaction.idConta) {
+          return balance;
+        }
+
+        return balance + currentTransaction.valor;
+      },
+      0,
+    );
+
+    return totalBalance;
+  }
 }
 
 export default FakeTransactionsRepository;

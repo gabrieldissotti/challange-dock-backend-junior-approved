@@ -12,6 +12,10 @@ class TransactionsRepository implements ITransactionsRepository {
     this.ormRepository = getRepository(Transaction);
   }
 
+  private convertMoneyToNumber(money: string): number {
+    return Number(money.slice(1));
+  }
+
   public async create({
     idConta,
     valor,
@@ -24,6 +28,19 @@ class TransactionsRepository implements ITransactionsRepository {
     await this.ormRepository.save(account);
 
     return account;
+  }
+
+  public async getAccountBalance(accountId: number): Promise<number> {
+    const queryBuilder = this.ormRepository.createQueryBuilder('Transacoes');
+
+    const { sum } = await queryBuilder
+      .select('SUM(valor)')
+      .where(`Transacoes.idConta = ${accountId}`)
+      .getRawOne();
+
+    const balance = this.convertMoneyToNumber(sum);
+
+    return balance;
   }
 }
 

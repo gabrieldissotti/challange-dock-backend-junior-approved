@@ -43,6 +43,14 @@ class FakeTransactionsRepository {
 
     return totalBalance;
   }
+
+  public async getAccountStatement(accountId: number): Promise<Transaction[]> {
+    const transactions = this.transactions.filter(
+      transaction => transaction.idConta === accountId,
+    );
+
+    return transactions;
+  }
 }
 
 export default FakeTransactionsRepository;

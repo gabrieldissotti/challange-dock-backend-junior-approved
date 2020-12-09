@@ -42,6 +42,16 @@ class TransactionsRepository implements ITransactionsRepository {
 
     return balance;
   }
+
+  public async getAccountStatement(accountId: number): Promise<Transaction[]> {
+    const statement = this.ormRepository.find({
+      where: {
+        idConta: accountId,
+      },
+    });
+
+    return statement;
+  }
 }
 
 export default TransactionsRepository;

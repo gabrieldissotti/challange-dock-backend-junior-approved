@@ -5,4 +5,6 @@ export default interface ITransactionsRepository {
   create(account: ITransactionDTO): Promise<Transaction | undefined>;
 
   getAccountBalance(accountId: number): Promise<number>;
+
+  getAccountStatement(accountId: number): Promise<Transaction[]>;
 }

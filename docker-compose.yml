@@ -1,8 +1,9 @@
-version: "3.1"
+version: "3.8"
 
 services:
   dock-database:
     image: postgres
+    container_name: dock-database
     restart: always
     ports:
       - 5432:5432
@@ -10,3 +11,26 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    networks:
+      - dock-network
+
+  dock-api:
+    image: node:14
+    container_name: dock-api
+    working_dir:  /usr/src/app
+    build:
+      context: .
+    ports:
+      - 3333:3333
+    command: bash -c "yarn install && yarn typeorm migration:run && yarn start"
+    volumes:
+      - ./:/src
+      - ./:/usr/src/app/
+    networks:
+      - dock-network
+    links:
+      - dock-database
+
+networks:
+    dock-network:
+        driver: bridge

@@ -19,6 +19,8 @@ class TransactionsRepository implements ITransactionsRepository {
   }
 
   private convertMoneyToNumber(money: string): number {
+    if (!money) return 0;
+
     return Number(money.slice(1));
   }
 

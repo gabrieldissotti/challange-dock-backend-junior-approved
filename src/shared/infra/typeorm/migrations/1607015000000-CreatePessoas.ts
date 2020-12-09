@@ -28,9 +28,29 @@ export class CreatePessoas1607015000000 implements MigrationInterface {
         ],
       }),
     );
+
+    await queryRunner.manager
+      .createQueryBuilder()
+      .insert()
+      .into('Pessoas')
+      .values({
+        idPessoa: 1,
+        nome: 'Gabriel Dissotti',
+        cpf: '56509937000',
+        dataNascimento: new Date(1998, 9, 15),
+      })
+      .execute();
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.manager
+      .createQueryBuilder()
+      .delete()
+      .where({
+        idPessoa: 1,
+      })
+      .execute();
+
     await queryRunner.dropTable('Pessoas');
   }
 }

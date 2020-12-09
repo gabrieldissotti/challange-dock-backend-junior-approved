@@ -1,5 +1,6 @@
 {
   "name": "dock-api",
+  "private": true,
   "version": "0.0.4",
   "description": "dock api",
   "main": "src/shared/infra/http/server.ts",
@@ -12,7 +13,8 @@
   "license": "Apache 2.0",
   "scripts": {
     "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s . -o ./dist",
-    "start": "ts-node-dev --respawn --inspect --ignore-watch node_modules -r tsconfig-paths/register src/shared/infra/http/server.ts",
+    "start": "export NODE_ENV=development && yarn ts-node-dev --respawn --inspect --ignore-watch node_modules -r tsconfig-paths/register src/shared/infra/http/server.ts",
+    "start:docker": "export NODE_ENV=development && yarn ts-node-dev --respawn --ignore-watch node_modules -r tsconfig-paths/register src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "release:version": "yarn bump --all --commit --tag --push",
     "test": "cross-env NODE_ENV=test jest"

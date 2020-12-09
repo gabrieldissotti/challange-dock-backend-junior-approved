@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateAccountService from '@modules/accounts/services/CreateAccountService';
+import DisableAccountService from '@modules/accounts/services/DisableAccountService';
 
 class AccountsController {
   public async store(request: Request, response: Response): Promise<Response> {
@@ -19,6 +20,27 @@ class AccountsController {
     return response.json({
       success: true,
       message: 'Conta cadastrada com sucesso',
+      data: {
+        ...account,
+      },
+    });
+  }
+
+  public async destroy(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { account_id } = request.params;
+
+    const disableAccountService = container.resolve(DisableAccountService);
+
+    const account = await disableAccountService.execute({
+      idConta: Number(account_id),
+    });
+
+    return response.json({
+      success: true,
+      message: 'Conta desativada com sucesso',
       data: {
         ...account,
       },

@@ -1,6 +1,7 @@
 import { EntityRepository } from 'typeorm';
 
 import Account from '@modules/accounts/infra/typeorm/entities/Account';
+import AppError from '@shared/errors/AppError';
 
 type CreateAndSaveRequest = {
   idPessoa: number;
@@ -34,6 +35,22 @@ class FakeAccountsRepository {
     this.accounts.push(account);
 
     return account;
+  }
+
+  public async disable({
+    idConta,
+  }: CreateAndSaveRequest): Promise<Account | undefined> {
+    const accountIndex = this.accounts.findIndex(
+      account => Number(account.idConta) === Number(idConta),
+    );
+
+    if (!this.accounts[accountIndex]) {
+      throw new AppError('Account does not exists', 400);
+    }
+
+    this.accounts[accountIndex].flagAtivo = false;
+
+    return this.accounts[accountIndex];
   }
 }
 

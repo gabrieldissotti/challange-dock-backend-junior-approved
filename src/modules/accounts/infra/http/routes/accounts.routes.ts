@@ -7,6 +7,8 @@ const accountsRoutes = Router();
 
 accountsRoutes.post('/', AccountsController.store);
 
+accountsRoutes.delete('/:account_id', AccountsController.destroy);
+
 accountsRoutes.get('/:account_id/balance', BalanceController.show);
 
 export default accountsRoutes;

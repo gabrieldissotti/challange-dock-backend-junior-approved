@@ -31,7 +31,6 @@ http://localhost:3333. Mas calma, você pode ver os endpoints disponíveis na
 
 - Adicionar validação nas rotas
 - CPF único por pessoa
-- Adicionar documentação da referencia da api
 - O teste de integração tá consumindo a base de desenvolvimento invés da base de teste
 - criar testes de integração pra outras rotas além da 'criar conta'
 - Não permitir débito ou crédito com número negativo

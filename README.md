@@ -49,3 +49,5 @@ Contato: gabrieldnrodrigues@gmail.com
 [Visite meu linkedin](https://www.linkedin.com/in/gabrieldissotti/)
 
 PS. (sempre tem um ps): Não fiz tudo o que eu queria, mas dei meu melhor no tempo que tive disponibilidade rs.
+
+Acredito que cumpri todos os requisitos e diferenciais propostos. só fiquei em dúvida se consegui resolver o "Implementação de pontos de falha e resiliência", mas assim, se der erro a API não para de funcionar hahah.

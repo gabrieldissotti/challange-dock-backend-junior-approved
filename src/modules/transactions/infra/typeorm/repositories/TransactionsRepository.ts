@@ -1,4 +1,10 @@
-import { getRepository, Repository } from 'typeorm';
+import {
+  Between,
+  getRepository,
+  LessThanOrEqual,
+  MoreThanOrEqual,
+  Repository,
+} from 'typeorm';
 
 import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 
@@ -14,6 +20,26 @@ class TransactionsRepository implements ITransactionsRepository {
 
   private convertMoneyToNumber(money: string): number {
     return Number(money.slice(1));
+  }
+
+  private getFilterByPeriod(start_date, end_date) {
+    if (start_date && end_date) {
+      return {
+        dataTransacao: Between(start_date, end_date),
+      };
+    }
+
+    if (start_date) {
+      return {
+        dataTransacao: MoreThanOrEqual(start_date),
+      };
+    }
+
+    if (end_date) {
+      return {
+        dataTransacao: LessThanOrEqual(start_date),
+      };
+    }
   }
 
   public async create({
@@ -43,10 +69,15 @@ class TransactionsRepository implements ITransactionsRepository {
     return balance;
   }
 
-  public async getAccountStatement(accountId: number): Promise<Transaction[]> {
+  public async getAccountStatement(
+    accountId: number,
+    start_date?: Date,
+    end_date?: Date,
+  ): Promise<Transaction[]> {
     const statement = this.ormRepository.find({
       where: {
         idConta: accountId,
+        ...this.getFilterByPeriod(start_date, end_date),
       },
     });
 

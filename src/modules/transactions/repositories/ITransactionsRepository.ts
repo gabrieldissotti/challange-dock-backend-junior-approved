@@ -6,5 +6,9 @@ export default interface ITransactionsRepository {
 
   getAccountBalance(accountId: number): Promise<number>;
 
-  getAccountStatement(accountId: number): Promise<Transaction[]>;
+  getAccountStatement(
+    accountId: number,
+    start_date?: Date,
+    end_date?: Date,
+  ): Promise<Transaction[]>;
 }

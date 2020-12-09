@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { startOfDay, endOfDay } from 'date-fns';
 
 import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 
@@ -15,9 +16,16 @@ class GetAccountStatementService {
 
   public async execute({
     idConta,
+    start_date,
+    end_date,
   }: IGetAccountBalanceDTO): Promise<Transaction[]> {
+    const startDate = start_date ? startOfDay(start_date) : undefined;
+    const endDate = end_date ? endOfDay(end_date) : undefined;
+
     const statement = await this.transactionsRepository.getAccountStatement(
       idConta,
+      startDate,
+      endDate,
     );
 
     return statement;

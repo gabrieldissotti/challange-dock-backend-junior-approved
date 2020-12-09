@@ -44,7 +44,11 @@ class FakeTransactionsRepository {
     return totalBalance;
   }
 
-  public async getAccountStatement(accountId: number): Promise<Transaction[]> {
+  public async getAccountStatement(
+    accountId: number,
+    start_date: Date,
+    end_date: Date,
+  ): Promise<Transaction[]> {
     const transactions = this.transactions.filter(
       transaction => transaction.idConta === accountId,
     );

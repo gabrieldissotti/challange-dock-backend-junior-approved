@@ -45,7 +45,7 @@ Qualquer dúvida também pode me chamar no email:
 
 Contato: gabrieldnrodrigues@gmail.com
 
-[Visite meu linkedin](https://www.linkedin.com/in/gabrieldissotti/)
+[Visite meu linkedin](https://www.linkedin.com/in/gabrieldissotti/).
 
 PS. (sempre tem um ps): Não fiz tudo o que eu queria, mas dei meu melhor no tempo que tive disponibilidade rs.
 
